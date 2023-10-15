@@ -10,7 +10,6 @@ localStorage.setItem('user', JSON.stringify(user));
 // Função para login
 function login() {
     window.location.href = 'website/pagina_inicial.html';
-
 }
 
 // Login de usuário
