@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dewey Acessar</title>
+    <title>Cadastro</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/variaveis.css">
@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href="/css/darkMode.css"> -->
 
     <!-- scripts -->
-    <script src="/assets/js/login.js" defer></script>
+    <script src="/assets/js/cadastro.js" defer></script>
     <!-- <script src="/js/dark_mode.js" defer></script>  -->
 
 
@@ -22,16 +22,9 @@
 
     <main>
 
-        <h1 class="tituloSite conteiner-primario">Tarefas</h1>
+        <h1 class="tituloSite conteiner-primario">Cadastro</h1>
 
         <div class="container-login conteiner-primario">
-
-
-            <div class="area-avatar-3d">
-                <img class="avatar-3d picture" src="/assets/images/3d_avatar_21.png" alt="Imagem de Perfil" />
-            </div>
-
-            <h2 class="titulo-texto nome-completo"></h2>
 
             <form class="form">
 
@@ -56,7 +49,22 @@
 
                         <label for="senha" class="rotulo-texto-2">Senha</label>
 
-                        <input placeholder="Confirmar senha" type="password" id="senha"
+                        <input placeholder="senha" type="password" id="senha"
+                            class="estilo-input estilo-conteiner-secundario">
+
+
+                    </div>
+
+                </div>
+                <div class="indicador-ativo"></div>
+
+                <div class="campo-texto-2 estilo-conteiner-secundario">
+
+                    <div class="conteudo">
+
+                        <label for="senha" class="rotulo-texto-2">Senha</label>
+
+                        <input placeholder="Confirmar senha" type="password" id="senha-confirmar"
                             class="estilo-input estilo-conteiner-secundario">
 
 
@@ -66,7 +74,7 @@
                 <div class="indicador-ativo"></div>
 
                 <button class="botao-estendido estilo-conteiner-secundario botao-selecionado"
-                    onclick="verificarEredirecionar()">
+                onclick="cadastrarUsuario()">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
@@ -74,16 +82,16 @@
                             fill="#466800" />
                     </svg>
 
-                    <span class="titulo-texto">Acessar</span>
+                    <span class="titulo-texto">Cadastrar</span>
 
                 </button>
 
             </form>
 
             <div class="conteiner_cadastro">
-                <p>Você ainda não tem uma conta?</p>
+                <p>Você já tem uma conta?</p>
 
-                <a href="/website/cadastro.html">Clique aqui para criar.</a>
+                <a href="/index.html">Acessar</a>
             </div>
 
         </div>
