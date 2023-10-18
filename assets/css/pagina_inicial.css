@@ -554,6 +554,9 @@ header {
     background-color: transparent;
     /* Cor da "trilha" (área da barra de rolagem que não está ocupada pelo polegar) */
 }
+textarea.estilo-input {
+    min-width: 100%;
+}
 
 .estilo-input {
     border-radius: 9px;
@@ -597,6 +600,7 @@ header {
 .acoesTarefas {
     display: inline-flex;
 }
+
 
 
 .conteiner_card_criar {

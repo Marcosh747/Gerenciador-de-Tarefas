@@ -19,7 +19,7 @@ function verificarEredirecionar() {
         sessionStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
 
         // Redireciona o usuário para a página principal
-        window.location.href = '/website/pagina_Inicial.html';
+        window.location.href = 'website/pagina_inicial.html';
     } else {
         alert("Nome de usuário ou senha incorretos. Por favor, verifique.");
     }
