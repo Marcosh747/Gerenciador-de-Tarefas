@@ -14,7 +14,8 @@ function cadastrarUsuario() {
     // Cria um objeto de usuário com os dados
     const usuario = {
         nome: nomeUsuario,
-        senha: senha
+        senha: senha,
+        situacao: false,
     };
 
     // Verifica se o LocalStorage já possui dados de usuários
@@ -35,5 +36,5 @@ function cadastrarUsuario() {
     alert("Usuário cadastrado com sucesso!");
 
     // Redireciona para a página "index.html"
-    window.location.href = '/index.html';
+    window.location.href = '/';
 }

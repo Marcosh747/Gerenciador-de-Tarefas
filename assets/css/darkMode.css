@@ -21,7 +21,7 @@ body.dark * {
     background: var(--m-3-sys-dark-primary);
 }
 
-.dark .icone > path {
+.dark svg > path {
     fill: var(--m-3-sys-dark-on-surface-variant) !important;
 }
 

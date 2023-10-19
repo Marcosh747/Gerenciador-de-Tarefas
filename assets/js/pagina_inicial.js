@@ -105,3 +105,57 @@ function toggleModalExpand() {
         modal.classList.remove("modal-expand");
     }
 }
+
+
+
+
+
+
+// Função para pegar o nome do usuário logado
+function pegaUsuario() {
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    for (let i = 0; i < usuarios.length; i++) {
+        const usuario = usuarios[i];
+        if (usuario.situacao === true) {
+            return usuario.nome;
+        }
+    }
+    return "Usuário não encontrado";
+}
+
+// Selecione o elemento h2 para exibir o nome do usuário
+const h2 = document.querySelector('.ola-usuario');
+
+// Adicione o nome do usuário logado no título
+h2.textContent = "Olá, " + pegaUsuario();
+
+
+
+
+
+
+
+// Pega o Usuário logado e altera ele para ativo
+function pegaUsuarioAtivo() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const userKey = localStorage.key(i)
+        const informationsKey = localStorage.getItem(userKey)
+        let informationsKeyJson = JSON.parse(informationsKey)
+        informationsKeyJson.situacao = false
+        informationsKeyJson = JSON.stringify(informationsKeyJson)
+        localStorage.setItem(userKey, informationsKeyJson);
+    }
+
+}
+
+
+
+// Evento de deslogar usuário
+const sair = document.querySelector('.sair')
+const loginPage = '../../index.html'
+sair.addEventListener('click', () => {
+    pegaUsuarioAtivo()
+    window.location.href = loginPage;
+
+})

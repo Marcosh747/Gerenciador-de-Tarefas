@@ -184,7 +184,6 @@ section.feed2 {
 .conteiner_editar_tarefa.active {
     /* Estilos após a seleção do arquivo */
     display: flex;
-
 }
 
 
@@ -494,7 +493,9 @@ header {
     border: 0;
     padding: 16px;
     display: flex;
-}
+} 
+
+
 
 .fab:hover {
     box-shadow: var(--m-3-elevation-light-3-box-shadow,
