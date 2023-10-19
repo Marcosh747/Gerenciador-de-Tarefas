@@ -124,10 +124,9 @@ function pegaUsuario() {
     return "Usuário não encontrado";
 }
 
-// Selecione o elemento h2 para exibir o nome do usuário
+// exibir o nome do usuário
 const h2 = document.querySelector('.ola-usuario');
 
-// Adicione o nome do usuário logado no título
 h2.textContent = "Olá, " + pegaUsuario();
 
 
