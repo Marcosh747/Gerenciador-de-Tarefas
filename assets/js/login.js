@@ -1,7 +1,5 @@
-
 // Função para verificar o login e redirecionar
 function verificarEredirecionar() {
-    // Pega os valores inseridos nos campos de entrada
     const nomeUsuario = document.getElementById("nomeUsuario").value;
     const senha = document.getElementById("senha").value;
 
@@ -13,29 +11,21 @@ function verificarEredirecionar() {
         return usuario.nome === nomeUsuario;
     });
 
+    if (usuarioEncontrado) {
+        // Verifica se a senha está correta
+        if (senha === usuarioEncontrado.senha) {
+            // Simulação de um token de autenticação
+            const token = Math.random().toString(36).substring(7);
 
-    if (usuarioEncontrado && usuarioEncontrado.senha === senha) {
-  
-        usuarioEncontrado.situacao = true;
-        
-       
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        for (let i = 0; i < usuarios.length; i++) {
-            if (usuarios[i].id === usuarioEncontrado.id) {
-                usuarios[i] = usuarioEncontrado;
-                break;
-            }
+            // Salva o token no LocalStorage
+            localStorage.setItem("token", token);
+
+            // Redireciona o usuário para a página principal
+            window.location.href = 'website/pagina_inicial.html';
+        } else {
+            alert("Senha incorreta. Por favor, verifique.");
         }
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    
-       
-        sessionStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-    
-     
-        window.location.href = 'website/pagina_inicial.html';
     } else {
-        alert("Nome de usuário ou senha incorretos. Por favor, verifique.");
+        alert("Nome de usuário não encontrado. Por favor, verifique.");
     }
-    
 }
-
