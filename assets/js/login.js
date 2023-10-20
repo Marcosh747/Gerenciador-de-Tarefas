@@ -1,11 +1,8 @@
-// Função para verificar o login e redirecionar
 function verificarEredirecionar() {
     const nomeUsuario = document.getElementById("nomeUsuario").value;
     const senha = document.getElementById("senha").value;
 
-   
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
 
     const usuarioEncontrado = usuarios.find(function (usuario) {
         return usuario.nome === nomeUsuario;
@@ -19,6 +16,14 @@ function verificarEredirecionar() {
 
             // Salva o token no LocalStorage
             localStorage.setItem("token", token);
+
+            // Altera a situação do usuário para true
+            usuarioEncontrado.situacao = true;
+
+            // Atualiza os dados do usuário no LocalStorage
+            const usuarioIndex = usuarios.indexOf(usuarioEncontrado);
+            usuarios[usuarioIndex] = usuarioEncontrado;
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
             // Redireciona o usuário para a página principal
             window.location.href = 'website/pagina_inicial.html';
