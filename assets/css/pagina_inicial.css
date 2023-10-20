@@ -219,6 +219,19 @@ textarea.estilo-input {
     width: 100%;
     margin-bottom: 15px;
 }
+.botao-estendido {
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+    height: 50px;
+    width: max-content;
+    align-items: center;
+    background: var(--m-3-sys-light-surface-container-high, #e9e8e1);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: 0;
+}
 
 
 
@@ -605,8 +618,8 @@ textarea.estilo-input {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: flex-start;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .conteiner_card_criar > .botoes{
@@ -634,3 +647,7 @@ textarea.estilo-input {
     text-align: left;
 }
 
+
+.fechar-janela{
+    background: var(--m-3-sys-light-secondary-container);
+}
