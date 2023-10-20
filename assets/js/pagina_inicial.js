@@ -1,25 +1,24 @@
-// função para gerar um ID único baseado no timestamp
+// função para gerar um ID único
 function generateUniqueID() {
     return Date.now().toString();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Elementos do formulário
     const categoriaSelect = document.getElementById("categoria");
     const dataInput = document.getElementById("data");
     const descricaoInput = document.getElementById("descricao-criar");
     const enviarButton = document.getElementById("enviar-post");
 
-    // Evento de escuta quando o botão de envio é clicado
+
     enviarButton.addEventListener("click", function () {
         const categoria = categoriaSelect.value;
         const data = dataInput.value;
         const descricao = descricaoInput.value;
 
-        // Verificar se já existem tarefas no localStorage
+        // verificar se já existem tarefas no localStorage
         let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
-        // Gerar um ID único para a nova tarefa
+        // gerar um ID único para a nova tarefa
         const novaTarefa = {
             id: generateUniqueID(),
             categoria,
@@ -27,18 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
             descricao
         };
 
-        // Adicionar a nova tarefa ao array de tarefas
+        // adiciona nova tarefa ao array de tarefas
         tarefas.push(novaTarefa);
 
-        // Atualizar o localStorage com as tarefas
+        // atualiza o localStorage com as tarefas
         localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-        // Limpar os campos do formulário
+        // limpa os campos do formulário
         categoriaSelect.value = "padrao";
         dataInput.value = "";
         descricaoInput.value = "";
 
-        // Exibir mensagem ou realizar ações adicionais, se necessário
         alert("Tarefa adicionada com sucesso!");
         exibirTarefas();
     });
@@ -47,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Função para exibir tarefas nos feeds
+// exibir tarefas nos feeds
 function exibirTarefas() {
     exibirTarefasPorCategoria('pessoal', "#conteudo_feed1");
     exibirTarefasPorCategoria('trabalho', "#conteudo_feed2");
@@ -56,7 +54,7 @@ function exibirTarefas() {
 
 
 
-// Função para exibir tarefas por categoria em um feed
+// exibir tarefas por categoria em um feed
 function exibirTarefasPorCategoria(categoria, feedId) {
     const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
     const feedContent = document.querySelector(feedId);
@@ -101,7 +99,7 @@ function exibirTarefasPorCategoria(categoria, feedId) {
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path fill="#45483D" d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
         `;
 
-        // Evento de clique no botão "Apagar"
+        // apagar tarefa
         BtnApagar.addEventListener("click", function () {
             const tarefaId = tarefa.id;
             removerTarefa(tarefaId);
@@ -135,7 +133,6 @@ function exibirTarefasPorCategoria(categoria, feedId) {
     });
 }
 
-// Chame exibirTarefas inicialmente
 exibirTarefas();
 
 // CONTEINER CENTRAL 
@@ -151,7 +148,7 @@ function conteinerCentral() {
 
 
 
-
+// apagar tarefa
 function removerTarefa(tarefaId) {
     let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
     tarefas = tarefas.filter(tarefa => tarefa.id !== tarefaId);
@@ -164,7 +161,7 @@ function removerTarefa(tarefaId) {
 
 
 
-// Função para pegar o nome do usuário logado
+// pegar o nome do usuário logado
 function pegaUsuario() {
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -226,7 +223,6 @@ sair.addEventListener('click', () => {
 
 
 function editar() {
-    // Elementos do formulário de edição
     const categoriaSelectEditar = document.getElementById("categoria-editar");
     const dataInputEditar = document.getElementById("data-editar");
     const descricaoInputEditar = document.getElementById("descricao-editar");
@@ -235,58 +231,55 @@ function editar() {
 
 
 
-    // Evento de escuta para abrir o formulário de edição
+  
     const abrirEditar = document.querySelectorAll(".editar-tarefa");
     abrirEditar.forEach(botaoEditar => {
         botaoEditar.addEventListener("click", function () {
-            // Capture o ID da tarefa que deseja editar (pode ser obtido a partir do atributo data-task-id)
+
             tarefaIDEmEdicao = this.getAttribute("tarefa-id");
 
-            // Busque a tarefa correspondente no localStorage com base no ID
+            // busca a tarefa no localStorage com base no ID
             const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
             const tarefaEditar = tarefas.find(tarefa => tarefa.id);
 
-            // Verifique se a tarefa foi encontrada antes de acessar suas propriedades
             if (tarefaEditar) {
-                // Preencha os campos do formulário de edição com os dados da tarefa
+               
                 categoriaSelectEditar.value = tarefaEditar.categoria;
                 dataInputEditar.value = tarefaEditar.data;
                 descricaoInputEditar.value = tarefaEditar.descricao;
 
-                // Adicione a classe .abrir ao formulário de edição para exibi-lo
+                // adiciona a class .abrir
                 containerEditarTarefa.classList.add('abrir');
             }
         });
     });
 
-    // Evento de escuta quando o botão de envio é clicado (para editar)
+    // (para editar)
     enviarButtonEditar.addEventListener("click", function () {
         if (tarefaIDEmEdicao) {
-            // Busque a tarefa correspondente no localStorage com base no ID
+            // busca no localStorage com base no ID
             const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
             const tarefaEditar = tarefas.find(tarefa => tarefa.id);
 
-            // Verifique se a tarefa foi encontrada antes de atualizar suas propriedades
             if (tarefaEditar) {
-                // Atualize as propriedades da tarefa com as novas informações do formulário de edição
+                // novas informações do formulário de edição
                 tarefaEditar.categoria = categoriaSelectEditar.value;
                 tarefaEditar.data = dataInputEditar.value;
                 tarefaEditar.descricao = descricaoInputEditar.value;
 
-                // Atualize o localStorage com a tarefa editada
+                // atualiza o localStorage com a tarefa editada
                 localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-                // Remova a classe .abrir para esconder o formulário de edição
+                // remove a classe .abrir para esconder o formulário de edição
                 containerEditarTarefa.classList.remove('abrir');
 
-                // Atualize a exibição das tarefas
+                // atualiza
                 exibirTarefas();
             }
         }
     });
 
     const fecharJanelaButton = document.querySelector(".fechar-janela");
-
 
     fecharJanelaButton.addEventListener("click", function () {
         containerEditarTarefa.classList.remove('abrir');

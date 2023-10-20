@@ -21,7 +21,7 @@ function toggleDarkMode() {
   }
 }
 
-// Função para atualizar o modo escuro
+// atualizar o modo escuro
 function updateDarkMode() {
   const isDarkMode = localStorage.getItem('darkMode');
 
@@ -37,7 +37,7 @@ function updateDarkMode() {
   }
 }
 
-// Chame a função para atualizar o modo escuro quando a página carregar
+// modo escuro quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
   updateDarkMode();
 });
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const checkbox_dark = document.getElementById('modo_dark');
 
 if (checkbox_dark) {
-  // Adicione um ouvinte de evento para alternar o modo escuro
+  // para alternar o modo escuro
   checkbox_dark.addEventListener('change', toggleDarkMode);
 }
 

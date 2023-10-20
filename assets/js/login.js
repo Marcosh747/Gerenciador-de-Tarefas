@@ -9,23 +9,21 @@ function verificarEredirecionar() {
     });
 
     if (usuarioEncontrado) {
-        // Verifica se a senha está correta
+        // verifica se a senha está correta
         if (senha === usuarioEncontrado.senha) {
-            // Simulação de um token de autenticação
+            // simulação de um token de autenticação
             const token = Math.random().toString(36).substring(7);
-
-            // Salva o token no LocalStorage
             localStorage.setItem("token", token);
 
-            // Altera a situação do usuário para true
+            // altera a situação do usuário para true
             usuarioEncontrado.situacao = true;
 
-            // Atualiza os dados do usuário no LocalStorage
+            // atualiza os dados do usuário no LocalStorage
             const usuarioIndex = usuarios.indexOf(usuarioEncontrado);
             usuarios[usuarioIndex] = usuarioEncontrado;
             localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-            // Redireciona o usuário para a página principal
+            // redireciona o usuario para a página principal
             window.location.href = 'website/pagina_inicial.html';
         } else {
             alert("Senha incorreta. Por favor, verifique.");
