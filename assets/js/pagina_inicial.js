@@ -1,41 +1,37 @@
- // Função para criar uma nova tarefa
- function criarTarefa() {
-    const categoriaSelecionada = document.getElementById("categoria").value;
-    const data = document.getElementById("data").value;
-    const descricao = document.getElementById("descricao-criar").value;
+document.addEventListener("DOMContentLoaded", function() {
+    // Elementos do formulário
+    const categoriaSelect = document.getElementById("categoria");
+    const dataInput = document.getElementById("data");
+    const descricaoInput = document.getElementById("descricao-criar");
+    const enviarButton = document.getElementById("enviar-post");
 
-    if (categoriaSelecionada === 'padrao' || !descricao) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+    // Evento de escuta quando o botão de envio é clicado
+    enviarButton.addEventListener("click", function() {
+        const categoria = categoriaSelect.value;
+        const data = dataInput.value;
+        const descricao = descricaoInput.value;
 
-    const novaTarefa = new Tarefa(categoriaSelecionada, data, descricao);
-    novaTarefa.salvar();
-    limparCampos();
-    exibirTarefas();
-}
+        // Verificar se já existem tarefas no localStorage
+        let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
-// Classe para representar uma tarefa
-class Tarefa {
-    constructor(categoria, data, descricao) {
-        this.categoria = categoria;
-        this.data = data;
-        this.descricao = descricao;
-    }
+        // Adicionar a nova tarefa ao array de tarefas
+        tarefas.push({ categoria, data, descricao });
 
-    salvar() {
-        const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-        tarefas.push(this);
-        localStorage.setItem('tarefas', JSON.stringify(tarefas));
-    }
-}
+        // Atualizar o localStorage com as tarefas
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-// Função para limpar campos após criar uma tarefa
-function limparCampos() {
-    document.getElementById("categoria").value = 'padrao';
-    document.getElementById("data").value = '';
-    document.getElementById("descricao-criar").value = '';
-}
+        // Limpar os campos do formulário
+        categoriaSelect.value = "padrao";
+        dataInput.value = "";
+        descricaoInput.value = "";
+
+        // Exibir mensagem ou realizar ações adicionais, se necessário
+        alert("Tarefa adicionada com sucesso!");
+        exibirTarefas();
+    });
+});
+
+
 
 // Função para exibir tarefas nos feeds
 function exibirTarefas() {
@@ -43,6 +39,8 @@ function exibirTarefas() {
     exibirTarefasPorCategoria('trabalho', "#feed2");
     exibirTarefasPorCategoria('estudo', "#feed3");
 }
+
+
 
 // Função para exibir tarefas por categoria em um feed
 function exibirTarefasPorCategoria(categoria, feedId) {
