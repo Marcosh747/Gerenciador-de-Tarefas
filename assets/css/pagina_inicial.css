@@ -4,7 +4,6 @@
     .feed3,
     .feed2 {
         max-width: 480px;
-        display: flex !important;
     }
 
 }
@@ -81,9 +80,6 @@ section.feed2 {
     flex: 1;
     box-sizing: border-box;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 
@@ -180,7 +176,7 @@ section.feed2 {
 
 }
 
-.conteiner_editar_tarefa.active {
+.conteiner_editar_tarefa.abrir {
     /* Estilos após a seleção do arquivo */
     display: flex;
 }
@@ -358,7 +354,7 @@ header {
 
 .barra-superior {
     border-radius: var(--arredondamento-do-cantos);
-    padding: 8px 4px 8px 4px;
+    padding: 8px 10px 8px 10px;
     display: flex;
     gap: 6px;
     align-items: center;
