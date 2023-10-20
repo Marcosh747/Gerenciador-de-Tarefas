@@ -141,7 +141,7 @@ exibirTarefas();
 // CONTEINER CENTRAL 
 const modal = document.querySelector(".modal-false");
 
-function toggleModalExpand() {
+function conteinerCentral() {
     if (!modal.classList.contains("modal-expand")) {
         modal.classList.add("modal-expand");
     } else {
