@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Função para exibir tarefas nos feeds
 function exibirTarefas() {
-    exibirTarefasPorCategoria('pessoal', "#feed1");
-    exibirTarefasPorCategoria('trabalho', "#feed2");
-    exibirTarefasPorCategoria('estudo', "#feed3");
+    exibirTarefasPorCategoria('pessoal', "#conteudo_feed1");
+    exibirTarefasPorCategoria('trabalho', "#conteudo_feed2");
+    exibirTarefasPorCategoria('estudo', "#conteudo_feed3");
 }
 
 

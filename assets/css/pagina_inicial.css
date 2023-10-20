@@ -81,7 +81,6 @@ section.feed2 {
     flex: 1;
     box-sizing: border-box;
     padding: 15px;
-    gap: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -370,7 +369,7 @@ header {
     justify-content: space-between;
 }
 
-.tituloSite {
+.titulo {
     color: var(--m-3-sys-light-on-surface);
     text-align: center;
     font: var(--m-3-title-large, 400 22px/28px "Roboto", sans-serif);
@@ -625,3 +624,17 @@ textarea.estilo-input {
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+#conteudo_feed1, #conteudo_feed2, #conteudo_feed3{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.tituloCategoria{
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+}
+

@@ -8,7 +8,7 @@ body * {
     box-sizing: border-box;
 }
 
-.tituloSite {
+.titulo {
     display: flex;
     justify-content: center;
     margin-bottom: 28px;
@@ -40,7 +40,7 @@ main {
 }
 
 
-.tituloSite,
+.titulo,
 .container-login {
     width: 100%;
     max-width: 460px;
