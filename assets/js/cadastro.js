@@ -11,15 +11,25 @@ function cadastrarUsuario() {
         return;
     }
 
+    // Verifica se o LocalStorage já possui dados de usuários
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    // Verifica se o nome de usuário já existe
+    const usuarioExistente = usuarios.find(function (usuario) {
+        return usuario.nome === nomeUsuario;
+    });
+
+    if (usuarioExistente) {
+        alert("Nome de usuário já existe. Escolha outro nome.");
+        return;
+    }
+
     // Cria um objeto de usuário com os dados
     const usuario = {
         nome: nomeUsuario,
         senha: senha,
         situacao: false,
     };
-
-    // Verifica se o LocalStorage já possui dados de usuários
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     // Adiciona o novo usuário à lista
     usuarios.push(usuario);
